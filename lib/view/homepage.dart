@@ -24,7 +24,15 @@ class Homepage extends StatelessWidget {
             }
             // When data is loaded
             if (userState is UserLoadedState) {
-              return Container();
+              return ListView.builder(
+                itemCount: userState.users.length,
+                itemBuilder: (context, index) {
+                  var path = userState.users[index];
+                  return ListTile(
+                    title: Text(path.name!),
+                  );
+                },
+              );
             }
             // When There is no internet occours
             if (userState is UserErrorState) {
