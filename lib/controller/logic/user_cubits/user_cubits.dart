@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:userapp/controller/logic/user_cubits/user_state.dart';
-
 import '../../../model/user_model.dart';
 import '../../repositories/user_repository.dart';
 
@@ -14,7 +13,7 @@ class UserCubit extends Cubit<UserState> {
 
   fetchUser() async {
     try {
-      List<UserModel> users = await UserRepository.fetchUserDetails();
+      List<UserModel> users = await userRepository.fetchUser();
       emit(UserLoadedState(users));
     } on DioError catch (e) {
       emit(UserErrorState(e.message.toString()));
