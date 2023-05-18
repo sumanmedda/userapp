@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:userapp/controller/logic/user_cubits/user_cubits.dart';
 import 'package:userapp/controller/logic/user_cubits/user_state.dart';
 
+import '../controller/const.dart';
 import '../controller/logic/internet_cubits/internet_cubits.dart';
 import '../controller/logic/internet_cubits/internet_state.dart';
 
@@ -24,25 +25,19 @@ class Homepage extends StatelessWidget {
             }
             // When data is loaded
             if (userState is UserLoadedState) {
-              return ListView.builder(
-                itemCount: userState.users.length,
-                itemBuilder: (context, index) {
-                  var path = userState.users[index];
-                  return ListTile(
-                    title: Text(path.name!),
-                  );
-                },
-              );
+              return userListView(userState);
             }
             // When There is no internet occours
             if (userState is UserErrorState) {
               // When internet is not connected
               if (internetState is InternetLostState) {
-                return Container();
+                return const Center(
+                  child: Text('Internet is not Connected'),
+                );
               }
               // When internet is connected
               if (internetState is InternetGainedState) {
-                return Container();
+                return userListView(internetState);
               }
             }
 

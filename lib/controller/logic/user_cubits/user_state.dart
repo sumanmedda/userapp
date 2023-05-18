@@ -6,7 +6,6 @@ class UserLoadingState extends UserState {}
 
 class UserLoadedState extends UserState {
   final List<UserModel> users;
-
   UserLoadedState(this.users);
 }
 
