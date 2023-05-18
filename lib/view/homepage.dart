@@ -13,6 +13,10 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Users'),
+      ),
       body: SafeArea(
         child: BlocBuilder<InternetCubit, InternetState>(
           builder: (context, internetState) =>
