@@ -21,8 +21,47 @@ class Homepage extends StatelessWidget {
         child: BlocBuilder<InternetCubit, InternetState>(
           builder: (context, internetState) =>
               BlocBuilder<UserCubit, UserState>(builder: (context, userState) {
-            // When data is loading
-            if (userState is UserLoadingState) {
+            // When internet is connected
+            if (internetState is InternetGainedState) {
+              // data is loading from api
+              if (userState is UserLoadingState) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              // data is loaded
+              if (userState is UserLoadedState) {
+                return userListView(userState);
+              }
+
+              if (userState is UserErrorState) {
+                return Center(
+                  child: Text(userState.error),
+                );
+              }
+            }
+            // When internet is not connected
+            if (internetState is InternetLostState) {
+              return const Center(
+                child: Text('Internet Not Connected'),
+              );
+            }
+
+            // If Something went Wrong / No Data
+            return const Center(
+              child: Text('No Data Found'),
+            );
+          }),
+        ),
+      ),
+    );
+  }
+}
+
+/*
+
+ if (userState is UserLoadingState) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
@@ -45,13 +84,6 @@ class Homepage extends StatelessWidget {
               }
             }
 
-            // If Something went Wrong / No Data
-            return const Center(
-              child: Text('No Data Found'),
-            );
-          }),
-        ),
-      ),
-    );
-  }
-}
+
+
+ */
