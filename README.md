@@ -1,16 +1,18 @@
 # userapp
 
-A new Flutter project.
+A Flutter app that fetches user infromation from api and displays user data.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- Installation Steps
+    1. Clone the repo: `git clone git@github.com:sumanmedda/userapp_project.git`
+    2. Open project in VS Code or any editor
+    3. Fetch the packages: `flutter pub get` 
+    4. connect a device / start emulator 
+    5. run the app
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Packages Used
+    1. flutter_bloc: ^8.1.2 : for state management
+    2. dio: ^5.1.2 : for making api(http) calls
+    3. pretty_dio_logger: ^1.3.1 : for displaying data fetched from api on console log
+    
