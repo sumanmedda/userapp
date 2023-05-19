@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../controller/logic/internet_cubits/internet_cubits.dart';
 import '../controller/logic/internet_cubits/internet_state.dart';
-import '../controller/widgets/custom_textbox.dart';
 
 class UserDetails extends StatelessWidget {
   final String name;
@@ -35,40 +35,67 @@ class UserDetails extends StatelessWidget {
           }
           // when intenet is connected
           if (internetState is InternetGainedState) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Container(
-                  height: 300,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white.withOpacity(0.8),
-                        offset: const Offset(-6.0, -6.0),
-                        blurRadius: 16.0,
+            return Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+              child: Column(
+                children: [
+                  Column(
+                    children: [
+                      const CircleAvatar(
+                        minRadius: 50,
+                        child: Icon(
+                          Icons.people,
+                          size: 45,
+                        ),
                       ),
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        offset: const Offset(6.0, 6.0),
-                        blurRadius: 16.0,
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        name,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25),
+                      ),
+                      Text(
+                        '@$username',
+                        style: const TextStyle(fontSize: 15),
                       ),
                     ],
-                    color: const Color(0xFFEFEEEE),
-                    borderRadius: BorderRadius.circular(12.0),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    height: 200,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        const BoxShadow(
+                          color: Colors.white10,
+                          offset: Offset(-6.0, -6.0),
+                          blurRadius: 16.0,
+                        ),
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          offset: const Offset(6.0, 6.0),
+                          blurRadius: 16.0,
+                        ),
+                      ],
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        CustomTextBox(title: 'Name', value: name),
-                        CustomTextBox(title: 'Username', value: username),
-                        CustomTextBox(title: 'Email', value: email),
-                        CustomTextBox(title: 'Phone', value: phone),
+                        ListTile(
+                            trailing: const Icon(Icons.email),
+                            title: Text(email)),
+                        ListTile(
+                            trailing: const Icon(Icons.phone),
+                            title: Text(phone)),
                       ],
                     ),
                   ),
-                ),
+                ],
               ),
             );
           }
