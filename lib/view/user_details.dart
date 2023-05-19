@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../controller/logic/internet_cubits/internet_cubits.dart';
 import '../controller/logic/internet_cubits/internet_state.dart';
 

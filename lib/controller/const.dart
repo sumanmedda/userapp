@@ -19,24 +19,21 @@ ListView userListView(state) {
       return Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 100,
           decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.white.withOpacity(0.8),
-                offset: const Offset(-6.0, -6.0),
-                blurRadius: 16.0,
-              ),
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                offset: const Offset(6.0, 6.0),
-                blurRadius: 16.0,
-              ),
-            ],
-            color: whiteColor,
-            borderRadius: BorderRadius.circular(12.0),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.black.withOpacity(0.1)),
           ),
           child: ListTile(
+            leading: const CircleAvatar(
+              child: Icon(
+                Icons.people,
+                size: 20,
+              ),
+            ),
+            trailing: const Icon(
+              Icons.navigate_next_sharp,
+              size: 25,
+            ),
             onTap: () {
               nextPage(
                   context,
@@ -47,7 +44,10 @@ ListView userListView(state) {
                     phone: path.phone!,
                   ));
             },
-            title: Text(path.name!),
+            title: Text(
+              path.name!,
+              style: const TextStyle(fontSize: 18),
+            ),
           ),
         ),
       );
