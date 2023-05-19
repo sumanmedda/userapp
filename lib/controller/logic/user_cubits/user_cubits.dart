@@ -9,14 +9,17 @@ class UserCubit extends Cubit<UserState> {
     fetchUser();
   }
 
-  UserRepository userRepository = UserRepository();
+  UserRepository userRepository =
+      UserRepository(); // used to get fetchUser function from user repository
 
   fetchUser() async {
     try {
       List<UserModel> users = await userRepository.fetchUser();
-      emit(UserLoadedState(users));
+      emit(UserLoadedState(
+          users)); // when app is loaded user data is sent to UserLoadedState
     } on DioError catch (e) {
-      emit(UserErrorState(e.message.toString()));
+      emit(UserErrorState(e.message
+          .toString())); // if something wrong happens this will print out the issue
     }
   }
 }

@@ -1,5 +1,6 @@
 import '../../../model/user_model.dart';
 
+// bloc cubits performs when events are occured
 abstract class InternetState {}
 
 class InternetLoadingState extends InternetState {}

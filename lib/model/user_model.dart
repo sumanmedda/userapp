@@ -1,23 +1,11 @@
-import 'package:hive/hive.dart';
-part 'user_model.g.dart';
-
-@HiveType(typeId: 111)
 class UserModel {
-  @HiveField(0)
   int? id;
-  @HiveField(1)
   String? name;
-  @HiveField(2)
   String? username;
-  @HiveField(3)
   String? email;
-  @HiveField(4)
   Address? address;
-  @HiveField(5)
   String? phone;
-  @HiveField(6)
   String? website;
-  @HiveField(7)
   Company? company;
 
   UserModel(

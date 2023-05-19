@@ -1,5 +1,6 @@
 import '../../../model/user_model.dart';
 
+// bloc cubits performs when events are occured
 abstract class UserState {}
 
 class UserLoadingState extends UserState {}

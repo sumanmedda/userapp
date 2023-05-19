@@ -7,7 +7,8 @@ class UserRepository {
 
   Future<List<UserModel>> fetchUser() async {
     try {
-      Response response = await api.sendReq.get('/users');
+      Response response = await api.sendReq
+          .get('/users'); // response will store the data fetched from api
       List<dynamic> userMaps = response.data;
 
       return userMaps.map((userMap) => UserModel.fromJson(userMap)).toList();

@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:userapp/view/user_details.dart';
 
+// to go to next page
 nextPage(context, page) {
   Navigator.push(context, MaterialPageRoute(builder: (context) => page));
 }
 
+// to go to previous page
 backPage(context) {
   Navigator.pop(context);
 }
 
+// colors
 var whiteColor = const Color(0xFFEFEEEE);
+
+// list view method to show user details
 ListView userListView(state) {
   return ListView.builder(
     physics: const BouncingScrollPhysics(),

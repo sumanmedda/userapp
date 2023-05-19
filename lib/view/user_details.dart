@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../controller/logic/internet_cubits/internet_cubits.dart';
 import '../controller/logic/internet_cubits/internet_state.dart';
+import '../controller/widgets/user_details_list.dart';
 
 class UserDetails extends StatelessWidget {
   final String name;
@@ -34,81 +35,9 @@ class UserDetails extends StatelessWidget {
           }
           // when intenet is connected
           if (internetState is InternetGainedState) {
-            return Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Column(
-                    children: [
-                      const CircleAvatar(
-                        minRadius: 60,
-                        child: Icon(
-                          Icons.people,
-                          size: 50,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      Text(
-                        name,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 25),
-                      ),
-                      Text(
-                        '@$username',
-                        style: const TextStyle(fontSize: 15),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 35,
-                  ),
-                  const SizedBox(width: 320, child: Divider()),
-                  const SizedBox(
-                    height: 35,
-                  ),
-                  Expanded(
-                    child: Material(
-                      borderRadius: BorderRadius.circular(12),
-                      elevation: 5,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12)),
-                        child: Column(
-                          children: [
-                            UserDetailListTile(
-                              type: 'Name',
-                              email: name,
-                              icon: Icons.person,
-                            ),
-                            UserDetailListTile(
-                              type: 'Username',
-                              email: username,
-                              icon: Icons.contacts_rounded,
-                            ),
-                            UserDetailListTile(
-                              type: 'Email',
-                              email: email,
-                              icon: Icons.email,
-                            ),
-                            UserDetailListTile(
-                              type: 'Phone',
-                              email: phone,
-                              icon: Icons.phone,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
+            // when intenet is connected
+            return UserDetailsWidget(
+                name: name, username: username, email: email, phone: phone);
           }
           // If Something went Wrong / No Data
           return const Center(
@@ -117,30 +46,5 @@ class UserDetails extends StatelessWidget {
         }),
       ),
     );
-  }
-}
-
-class UserDetailListTile extends StatelessWidget {
-  const UserDetailListTile({
-    super.key,
-    required this.email,
-    required this.type,
-    required this.icon,
-  });
-
-  final String email;
-  final String type;
-  final IconData icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-        leading: CircleAvatar(
-          child: Icon(
-            icon,
-            size: 20,
-          ),
-        ),
-        title: Text('$type : $email'));
   }
 }

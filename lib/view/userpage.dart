@@ -7,8 +7,8 @@ import '../controller/const.dart';
 import '../controller/logic/internet_cubits/internet_cubits.dart';
 import '../controller/logic/internet_cubits/internet_state.dart';
 
-class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+class Userpage extends StatelessWidget {
+  const Userpage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,32 +59,3 @@ class Homepage extends StatelessWidget {
     );
   }
 }
-
-/*
-
- if (userState is UserLoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            // When data is loaded
-            if (userState is UserLoadedState) {
-              return userListView(userState);
-            }
-            // When There is no internet occours
-            if (userState is UserErrorState) {
-              // When internet is not connected
-              if (internetState is InternetLostState) {
-                return const Center(
-                  child: Text('Internet is not Connected'),
-                );
-              }
-              // When internet is connected
-              if (internetState is InternetGainedState) {
-                return userListView(internetState);
-              }
-            }
-
-
-
- */
