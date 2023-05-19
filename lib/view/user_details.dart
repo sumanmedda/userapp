@@ -39,17 +39,20 @@ class UserDetails extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
               child: Column(
                 children: [
+                  const SizedBox(
+                    height: 50,
+                  ),
                   Column(
                     children: [
                       const CircleAvatar(
-                        minRadius: 50,
+                        minRadius: 60,
                         child: Icon(
                           Icons.people,
-                          size: 45,
+                          size: 50,
                         ),
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 40,
                       ),
                       Text(
                         name,
@@ -63,35 +66,44 @@ class UserDetails extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 50,
+                    height: 35,
                   ),
-                  Container(
-                    height: 200,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        const BoxShadow(
-                          color: Colors.white10,
-                          offset: Offset(-6.0, -6.0),
-                          blurRadius: 16.0,
+                  const SizedBox(width: 320, child: Divider()),
+                  const SizedBox(
+                    height: 35,
+                  ),
+                  Expanded(
+                    child: Material(
+                      borderRadius: BorderRadius.circular(12),
+                      elevation: 5,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Column(
+                          children: [
+                            UserDetailListTile(
+                              type: 'Name',
+                              email: name,
+                              icon: Icons.person,
+                            ),
+                            UserDetailListTile(
+                              type: 'Username',
+                              email: username,
+                              icon: Icons.contacts_rounded,
+                            ),
+                            UserDetailListTile(
+                              type: 'Email',
+                              email: email,
+                              icon: Icons.email,
+                            ),
+                            UserDetailListTile(
+                              type: 'Phone',
+                              email: phone,
+                              icon: Icons.phone,
+                            ),
+                          ],
                         ),
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          offset: const Offset(6.0, 6.0),
-                          blurRadius: 16.0,
-                        ),
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Column(
-                      children: [
-                        ListTile(
-                            trailing: const Icon(Icons.email),
-                            title: Text(email)),
-                        ListTile(
-                            trailing: const Icon(Icons.phone),
-                            title: Text(phone)),
-                      ],
+                      ),
                     ),
                   ),
                 ],
@@ -105,5 +117,30 @@ class UserDetails extends StatelessWidget {
         }),
       ),
     );
+  }
+}
+
+class UserDetailListTile extends StatelessWidget {
+  const UserDetailListTile({
+    super.key,
+    required this.email,
+    required this.type,
+    required this.icon,
+  });
+
+  final String email;
+  final String type;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+        leading: CircleAvatar(
+          child: Icon(
+            icon,
+            size: 20,
+          ),
+        ),
+        title: Text('$type : $email'));
   }
 }
