@@ -46,8 +46,6 @@ dependencies:
 
 dev_dependencies:
    #local Database
-  hive_generator: ^2.0.0
-  build_runner: ^2.4.4
   
   flutter_test:
     sdk: flutter
